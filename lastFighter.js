@@ -88,6 +88,9 @@ class LastFighter {
     }
 
     getPossibleMoves(_index) {
+        if (!this.pieces[_index].taken) {
+            return []
+        }
         const parentLeftIndex = this.pieces[_index].getParentLeftIndex()
         const parentRightIndex = this.pieces[_index].getParentRightIndex()
         const siblingLeftIndex = this.pieces[_index].getSiblingLeftIndex()
@@ -201,20 +204,24 @@ class LastFighter {
 }
 
 let game = new LastFighter(5)
-// for (let index = 0; index < game.pieces.length; index++) {
-//     game = new LastFighter(5)
-//     game.pieces[index].taken = false
-//     game.findSolution()
-//     console.log('index', index)
-//     console.log('game.pieces', game.pieces)
-//     console.log('game.moves', game.moves)
-// }
+for (let index = 0; index < game.pieces.length; index++) {
+    game = new LastFighter(5)
+    game.pieces[index].taken = false
+    game.findSolution()
+    console.log('index', index)
+    console.log('game.pieces', game.pieces)
+    console.log('game.moves', game.moves)
+}
 
-game.pieces[7].taken = false
-game.findSolution()
+// game.pieces[0].taken = false
+// game.findSolution()
 
-console.log('game.pieces', game.pieces)
-console.log('game.moves', game.moves)
+// console.log('game.pieces', game.pieces)
+// console.log('game.moves', game.moves)
 
 
-
+//       0
+//      1  2
+//    3  4  5
+//   6  7  8  9
+// 10 11 12 13 14
